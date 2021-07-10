@@ -26,9 +26,10 @@
         "button"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/Hero_Image.png",
         "desktop_text_box_position": "flex-end",
-        "background": "#ffffff",
-        "opacity": 1,
+        "background": "#f5efef",
+        "opacity": 0.8,
         "opacityText": 1,
         "stack_images_on_mobile": true,
         "adapt_height_first_image": false
