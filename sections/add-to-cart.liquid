@@ -1,0 +1,199 @@
+{{ "component-add-to-cart.css" | asset_url | stylesheet_tag }}
+
+<div id="add-to-cart-section">
+  <div class="add-to-cart-image">
+    <!-- <img src="{{ section.settings.featured_product.selected_or_first_available_variant | img_url: 'large' }}" alt=""> -->
+    <img class="selected-image" :src="selectedVariant.featured_image.src" alt="">
+  </div> 
+  <div class="add-to-cart-description">
+    <h2> {% if section.settings.featured_product %} {{ section.settings.featured_product.title }} {% else %} Title Of Product {% endif %}</h2>
+    <div class="add-to-cart-hr"></div>
+    <div class="add-to-cart-prices">
+      <p>{{ section.settings.featured_product.price | divided_by: 100.00 | round: 3  }}</p>
+      <p class="add-to-cart-old-price">ancien prix</p>
+      <p>{{ section.settings.featured_product.selected_variant }}</p>
+    </div>
+    <form id="add-to-cart">
+      <template v-for="(option, i) in form.options" :key="i">
+          <div class="wrapper">
+            <div class="atc-options" 
+            @click="" 
+            >
+                ${option.name}: <span> ${selected[i]}</span>
+                
+            </div>
+          </div>
+          <div class="atc-options-values" >
+              <template v-for="(value, index) in option.values" v-bind:value="value"> 
+                  <div class=""
+                      @click.prevent= "
+                          selected[i] = value;
+                          form.selections[i] = value;
+                          selection; 
+                      "
+                  >
+                      <button @click= "selection">
+                        <div v-if="i == 0" >   
+                          <p class=" {% if section.settings.hide_title %} hide {% endif %} ">${value} </p>         
+                          <img class="image-variant" :src="'//cdn.shopify.com/s/files/1/0582/2824/4664/t/3/assets/' + value + '.jpg'" alt="">
+                        </div>
+                        <div v-else >   
+                          <p >${value} </p>         
+                        </div>
+                      </button>                  
+                  </div>
+              </template>
+          </div>
+
+      </template>
+      <button @click="addToCart" type="submit" name="add" id="add-to-cart" class="add-to-cart-button">
+        Add to cart
+      </button>
+      <a href="/products/{{ section.settings.featured_product.handle }}">En savoir plus</a>
+    </form>
+  </div>
+</div>
+
+
+{% schema %}     
+{ 
+    "name": "Add to cart", 
+    "settings": [ 
+    { 
+        "type": "text", 
+        "id":"title", 
+        "label": "Heading", 
+        "default": "Add to Cart" 
+    }, 
+    { 
+    "type": "product",
+    "id": "featured_product", 
+    "label": "Featured product"
+    },
+    { 
+      "type": "checkbox",
+      "id": "hide_title", 
+      "label": "Hide Variant Title if color swatch is used",
+      "default": false 
+      } 
+  ]
+} 
+
+{% endschema %}
+
+<script>
+  if (document.querySelector("#add-to-cart-section")) {
+    const productForm = Vue.createApp({
+      delimiters: ["${", "}"],
+      data() {
+        return {
+          open: false,
+          variants: "",
+          value:"",
+          selected: [],
+          selectedVariant: "",
+          selectedImage: "",
+          form: {
+            selections: "",
+            options: "",
+          },
+        };
+      },
+      created() {
+        axios.get("/products/{{ section.settings.featured_product.handle }}.js")
+        .then((results) => {
+  
+          console.log(results);
+
+          this.form.options = results.data.options.map((item) => ({
+            ...item,
+            visible: false,
+          }));
+
+          this.variants = results.data.variants;
+
+          results.data.options.map((item) =>
+            this.selected.push(item.values[0])
+          );
+
+          this.form.selections = [
+            this.selected[0] ? this.selected[0] : null,
+            this.selected[1] ? this.selected[1] : null,
+            this.selected[2] ? this.selected[2] : null,
+          ];
+
+          this.variants.forEach((variant, i) => {
+            if (
+              variant.option1 === this.form.selections[0] &&
+              variant.option2 === this.form.selections[1] &&
+              variant.option3 === this.form.selections[2]
+            ) {
+              this.selectedVariant = variant;
+            }
+          });
+
+
+          console.log("voici ma variante : " );
+          console.log(this.selectedVariant)
+
+          this.variants.forEach;
+
+        });
+      },
+
+      methods: {
+        addToCart(event) {
+          event.preventDefault();
+
+          let selectedVariant;
+
+          this.variants.forEach((variant, i) => {
+            if (
+              variant.option1 === this.form.selections[0] &&
+              variant.option2 === this.form.selections[1] &&
+              variant.option3 === this.form.selections[2]
+            ) {
+              selectedVariant = variant;
+            }
+          });
+
+          this.variants.forEach;
+
+          let data = {
+            id: selectedVariant.id,
+            quantity: 1,
+          };
+
+          axios
+            .post("/cart/add.js", data)
+            .then((response) => {
+              store.getCart()
+            })
+            .then(() => {
+              toggleMiniCart.openCart()
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        },
+        selection() {
+
+            let selectedVariant;
+
+            this.variants.forEach((variant, i) => {
+              if (
+                variant.option1 === this.form.selections[0] &&
+                variant.option2 === this.form.selections[1] &&
+                variant.option3 === this.form.selections[2]
+              ) {
+                this.selectedVariant = variant;
+                console.log(this.selectedVariant)
+
+              }
+            });
+            this.variants.forEach;
+            }
+      },
+    }).mount("#add-to-cart-section");
+  }
+</script>
