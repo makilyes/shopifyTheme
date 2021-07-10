@@ -78,6 +78,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/Why_Shopify.png",
         "height": "adapt",
         "background": "#ffffff",
         "opacity": 1,
@@ -86,6 +87,42 @@
     },
     "logo-list": {
       "type": "logo-list",
+      "blocks": {
+        "82e35016-701e-4072-b459-305dab92f64c": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/vuejs_ce039b54-0778-4fec-882f-d79be42ead5e.png",
+            "link": ""
+          }
+        },
+        "b228c7c2-04e5-407f-8cc3-56e3ecf861da": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/shopify_glyph.png",
+            "link": ""
+          }
+        },
+        "210b6183-235c-492b-a576-1307e8999b30": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/css_logo.png",
+            "link": ""
+          }
+        },
+        "5a9f1ecb-0d98-473b-acfc-9001f27229f7": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/js_logo.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "82e35016-701e-4072-b459-305dab92f64c",
+        "b228c7c2-04e5-407f-8cc3-56e3ecf861da",
+        "210b6183-235c-492b-a576-1307e8999b30",
+        "5a9f1ecb-0d98-473b-acfc-9001f27229f7"
+      ],
       "settings": {
         "title": "Logo List"
       }
@@ -94,7 +131,7 @@
       "type": "add-to-cart",
       "settings": {
         "title": "Add to cart",
-        "featured_product": "",
+        "featured_product": "fishing-boats",
         "hide_title": false
       }
     }
