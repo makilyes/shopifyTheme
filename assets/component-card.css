@@ -41,7 +41,7 @@
   }
   
   .card--text-only {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
   }
   
