@@ -134,6 +134,12 @@
         "featured_product": "fishing-boats",
         "hide_title": false
       }
+    },
+    "side-by-side" : {
+      "type": "side-by-side",
+      "settings": {
+        "title": "Side by side"
+      }
     }
   },
   "order": [
@@ -141,6 +147,7 @@
     "featured_products",
     "image_text",
     "logo-list",
-    "add-to-cart"
+    "add-to-cart",
+    "side-by-side"
   ]
 }

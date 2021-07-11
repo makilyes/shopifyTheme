@@ -1,0 +1,21 @@
+.side-by-side {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.left-column {
+    background-color: red;
+    width: 50%;
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+.right-column {
+    background-color: blue;
+    width: 50%;
+    padding-bottom: 100px;
+    padding-top: 100px;
+}

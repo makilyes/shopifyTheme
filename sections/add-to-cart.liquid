@@ -57,7 +57,8 @@
 
 {% schema %}     
 { 
-    "name": " Featured product Add to cart", 
+    "name": " Featured product ATC",
+    "tag": "section", 
     "settings": [ 
     { 
         "type": "text", 
@@ -177,7 +178,7 @@
             });
         },
         selection() {
-
+          event.preventDefault()
             let selectedVariant;
 
             this.variants.forEach((variant, i) => {
