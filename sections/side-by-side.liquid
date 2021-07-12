@@ -1,21 +1,32 @@
 {{ 'component-side-by-side.css' | asset_url | stylesheet_tag }}
 
 <div class="side-by-side">
-  <div class="left-column" style="background-image: url( '{{ block.settings.image | img_url }}' );
-  ">
+  <div class="left-column">
       {% for block in section.blocks %}
       {%- case block.type -%}
       {% when 'Images' %}
-      <img src="{{ block.settings.image | img_url }}" loading="lazy" alt="{{ block.settings.image.alt }}" width="{{ block.settings.image.width }}"
-      height="{{ block.settings.image.height }}">
-      {% when 'titles' %}
-      <h2>{{ block.settings.titleleft | escape }}</h2>
-      {% when 'Subtitles' %}
-      <h3>{{ block.settings.Subtitle-left }}</h3>
-      {% when 'buttons' %}
-      <a href="{{ block.settings.button_link_1 }}"> {{ block.settings.button_label_1 }} </a>
-      {%- endcase -%}
-      {% endfor %}
+      <div class="image-background-left">
+        <img srcset="{%- if block.settings.image.width >= 165 -%}{{ block.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+        {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+        {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+        {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+        {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+        {%- if block.settings.image.width >= 1070 -%}{{ block.settings.image | img_url: '1070x' }} 1070w{%- endif -%}"
+         src="{{ block.settings.image | img_url }}" 
+         loading="lazy" 
+         alt="{{ block.settings.image.alt }}" 
+         width="{{ block.settings.image.width }}"
+        height="{{ block.settings.image.height }}"
+        >
+        {% when 'titles' %}
+        <h2 class="title-left">{{ block.settings.titleleft | escape }}</h2>
+        {% when 'Subtitles' %}
+        <h3 class="subtitle-left">{{ block.settings.Subtitle-left }}</h3>
+        {% when 'buttons' %}
+        <a class="button-left" href="{{ block.settings.button_link_1 }}"> {{ block.settings.button_label_1 }} </a>
+        {%- endcase -%}
+        {% endfor %}
+      </div>
     </div>
     <div class="right-column">
       {% for block in section.blocks %}

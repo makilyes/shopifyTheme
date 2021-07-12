@@ -9,8 +9,6 @@
 .left-column {
     background-color: red;
     width: 50%;
-    padding-bottom: 100px;
-    padding-top: 100px;
 }
 
 .right-column {
@@ -18,4 +16,30 @@
     width: 50%;
     padding-bottom: 100px;
     padding-top: 100px;
+}
+
+.image-background-left {
+    position: relative;
+    height: 100%;
+}
+
+.title-left {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.subtitle-left {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button-left {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
