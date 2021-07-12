@@ -31,15 +31,29 @@
     <div class="right-column">
       {% for block in section.blocks %}
       {%- case block.type -%}
-      {% when 'titles' %}
-      <h2>{{ block.settings.title-right }}</h2>
-      {% when 'Subtitles' %}
-      <h3>{{ block.settings.Subtitle-right }}</h3>
-      {% when 'buttons' %}
-      <a href="{{ block.settings.button_link_2 }}"> {{ block.settings.button_label_2 }} </a>
-      {%- endcase -%}
-
-      {% endfor %}
+      {% when 'Images' %}
+      <div class="image-background-left">
+        <img srcset="{%- if block.settings.image-2.width >= 165 -%}{{ block.settings.image-2 | img_url: '165x' }} 165w,{%- endif -%}
+        {%- if block.settings.image-2.width >= 360 -%}{{ block.settings.image-2 | img_url: '360x' }} 360w,{%- endif -%}
+        {%- if block.settings.image-2.width >= 535 -%}{{ block.settings.image-2 | img_url: '535x' }} 535w,{%- endif -%}
+        {%- if block.settings.image-2.width >= 720 -%}{{ block.settings.image-2 | img_url: '720x' }} 720w,{%- endif -%}
+        {%- if block.settings.image-2.width >= 940 -%}{{ block.settings.image-2 | img_url: '940x' }} 940w,{%- endif -%}
+        {%- if block.settings.image-2.width >= 1070 -%}{{ block.settings.image-2 | img_url: '1070x' }} 1070w{%- endif -%}"
+         src="{{ block.settings.image | img_url }}" 
+         loading="lazy" 
+         alt="{{ block.settings.image-2.alt }}" 
+         width="{{ block.settings.image-2.width }}"
+        height="{{ block.settings.image-2.height }}"
+        >
+        {% when 'titles' %}
+        <h2 class="title-left">{{ block.settings.title-right }}</h2>
+        {% when 'Subtitles' %}
+        <h3 class="subtitle-left">{{ block.settings.Subtitle-right }}</h3>
+        {% when 'buttons' %}
+        <a class="button-left" href="{{ block.settings.button_link_2 }}"> {{ block.settings.button_label_2 }} </a>
+        {%- endcase -%}
+        {% endfor %}
+      </div>
     </div>
 </div>
 
@@ -147,6 +161,9 @@
     {
       "name": "Columns",
       "blocks": [
+        {
+            "type": "Images"
+        },
         {
           "type": "titles"
         },
