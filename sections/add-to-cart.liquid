@@ -12,6 +12,7 @@
       <p>{{ section.settings.featured_product.price | divided_by: 100.00 | round: 3  }}</p>
       <p class="add-to-cart-old-price">ancien prix</p>
       <p>{{ section.settings.featured_product.selected_variant }}</p>
+      <!-- <p>${selectedVariant.title}</p> -->
     </div>
     <form id="add-to-cart">
       <template v-for="(option, i) in form.options" :key="i">
@@ -29,10 +30,10 @@
                       @click.prevent= "
                           selected[i] = value;
                           form.selections[i] = value;
-                          selection; 
+                          selectionn(value); 
                       "
                   >
-                      <button @click= "selection">
+                      <button>
                         <div v-if="i == 0" >   
                           <p class=" {% if section.settings.hide_title %} hide {% endif %} ">${value} </p>         
                           <img class="image-variant" :src="'//cdn.shopify.com/s/files/1/0582/2824/4664/t/3/assets/' + value + '.jpg'" alt="">
@@ -183,22 +184,11 @@
               console.log(error);
             });
         },
-        selection() {
+
+        selectionn(value) {
           event.preventDefault()
-            let selectedVariant;
-
-            this.variants.forEach((variant, i) => {
-              if (
-                variant.option1 === this.form.selections[0] &&
-                variant.option2 === this.form.selections[1] &&
-                variant.option3 === this.form.selections[2]
-              ) {
-                this.selectedVariant = variant;
-                console.log(this.selectedVariant)
-
-              }
-            });
-            this.variants.forEach;
+            console.log(value)
+            this.selectedVariant = value;
             }
       },
     }).mount("#add-to-cart-section");

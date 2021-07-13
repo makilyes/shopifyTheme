@@ -1,20 +1,61 @@
 {{ 'component-grid-galery.css' | asset_url | stylesheet_tag }}
 
+<h2 class="title-grid-galery">{{ section.settings.title }}</h2>
 <div class="parent">
   <div class="div1">
-      <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt }}">
-  </div>
+      <img class="image-overlay" src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt }}">
+      <div class="overlay">
+        <p class="paragraph-overlay">{{ section.settings.text }}</p>
+        <p class="date-overlay">{{ section.settings.date }}</p>
+        <div class="likes-overlay-wrapper">
+          <span>❤</span>
+          <span>{{ section.settings.number }}</span>
+        </div>
+      </div>
+    </div>
   <div class="div2">
-    <img src="{{ section.settings.image-2 | img_url: 'master' }}" alt="{{ section.settings.image-2.alt }}">
+    <img class="image-overlay" src="{{ section.settings.image-2 | img_url: 'master' }}" alt="{{ section.settings.image-2.alt }}">
+    <div class="overlay">
+      <p class="paragraph-overlay">{{ section.settings.text-2 }}</p>
+      <p class="date-overlay">{{ section.settings.date-2 }}</p>
+      <div class="likes-overlay-wrapper">
+        <span>❤</span>
+        <span>{{ section.settings.number-2 }}</span>
+      </div>
+    </div>
   </div>
   <div class="div3">
-    <img src="{{ section.settings.image-3 | img_url: 'master' }}" alt="{{ section.settings.image-3.alt }}">
+    <img class="image-overlay" src="{{ section.settings.image-3 | img_url: 'master' }}" alt="{{ section.settings.image-3.alt }}">
+    <div class="overlay">
+      <p class="paragraph-overlay">{{ section.settings.text-3 }}</p>
+      <p class="date-overlay">{{ section.settings.date-3 }}</p>
+      <div class="likes-overlay-wrapper">
+        <span>❤</span>
+        <span>{{ section.settings.number-3 }}</span>
+      </div>
+    </div>
   </div>
   <div class="div4">
-    <img src="{{ section.settings.image-4 | img_url: 'master' }}" alt="{{ section.settings.image-4.alt }}">
+    <img class="image-overlay" src="{{ section.settings.image-4 | img_url: 'master' }}" alt="{{ section.settings.image-4.alt }}">
+    <div class="overlay">
+      <p class="paragraph-overlay">{{ section.settings.text-4 }}</p>
+      <p class="date-overlay">{{ section.settings.date-4 }}</p>
+      <div class="likes-overlay-wrapper">
+        <span>❤</span>
+        <span>{{ section.settings.number-4 }}</span>
+      </div>
+    </div>
   </div>
   <div class="div5">
-    <img src="{{ section.settings.image-5 | img_url: 'master' }}" alt="{{ section.settings.image-5.alt }}">
+    <img class="image-overlay" src="{{ section.settings.image-5 | img_url: 'master' }}" alt="{{ section.settings.image-5.alt }}">
+    <div class="overlay">
+      <p class="paragraph-overlay">{{ section.settings.text-5 }}</p>
+      <p class="date-overlay">{{ section.settings.date-5 }}</p>
+      <div class="likes-overlay-wrapper">
+        <span>❤</span>
+        <span>{{ section.settings.number-5 }}</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -24,31 +65,111 @@
 {
     "name": "grid galery",
     "tag": "section",
-    "settings": [  
+    "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },  
         {
             "type": "image_picker",
             "id": "image",
-            "label": "Image colum left"
+            "label": "Image 1"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text for image 1"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date for image 1"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number for image 1"
         },
         {
             "type": "image_picker",
             "id": "image-2",
-            "label": "Image colum left"
+            "label": "Image 2"
+        },
+        {
+          "type": "text",
+          "id": "text-2",
+          "label": "Text for image 2"
+        },
+        {
+          "type": "text",
+          "id": "date-2",
+          "label": "Date for image 2"
+        },
+        {
+          "type": "text",
+          "id": "number-2",
+          "label": "Number for image 2"
         }, 
         {
             "type": "image_picker",
             "id": "image-3",
-            "label": "Image colum left"
+            "label": "Image 3"
+        },
+        {
+          "type": "text",
+          "id": "text-3",
+          "label": "Text for image 3"
+        },
+        {
+          "type": "text",
+          "id": "date-3",
+          "label": "Date for image 3"
+        },
+        {
+          "type": "text",
+          "id": "number-3",
+          "label": "Number for image 3"
         }, 
         {
             "type": "image_picker",
             "id": "image-4",
-            "label": "Image colum left"
-        }, 
+            "label": "Image 4"
+        },
+        {
+          "type": "text",
+          "id": "text-4",
+          "label": "Text for image 4"
+        },
+        {
+          "type": "text",
+          "id": "date-4",
+          "label": "Date for image 4"
+        },
+        {
+          "type": "text",
+          "id": "number-4",
+          "label": "Number for image 4"
+        },
         {
             "type": "image_picker",
             "id": "image-5",
             "label": "Image colum left"
+        },
+        {
+          "type": "text",
+          "id": "text-5",
+          "label": "Text for image 5"
+        },
+        {
+          "type": "text",
+          "id": "date-5",
+          "label": "Date for image 5"
+        },
+        {
+          "type": "text",
+          "id": "number-5",
+          "label": "Number for image 5"
         }         
     ],
     "presets": [ 
