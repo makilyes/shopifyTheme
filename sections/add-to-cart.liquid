@@ -2,8 +2,18 @@
 
 <div id="add-to-cart-section">
   <div class="add-to-cart-image">
-    <!-- <img src="{{ section.settings.featured_product.selected_or_first_available_variant | img_url: 'large' }}" alt=""> -->
-    <img class="selected-image" :src="selectedVariant.featured_image.src" alt="">
+    <img :src="selectedVariant.featured_image.src" alt="">
+    <!--<div class="swiper-container-product-page swiper-container-{{- product.id -}}">
+      <div class="swiper-wrapper">
+        {% for image in product.images %}
+          <div class="swiper-slide">
+            <img id="{{ image.alt | handleize }}" src="{{ image.src | img_url: 'master' }}" alt="{{ image.alt | escape }}" />
+            <div class="swiper-button-next swiper-button-next-{{- product.id -}}"></div>
+            <div class="swiper-button-prev swiper-button-prev-{{- product.id -}}"></div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>-->
   </div> 
   <div class="add-to-cart-description">
     <h2> {% if section.settings.featured_product %} {{ section.settings.featured_product.title }} {% else %} Title Of Product {% endif %}</h2>
@@ -30,7 +40,7 @@
                       @click.prevent= "
                           selected[i] = value;
                           form.selections[i] = value;
-                          selectionn(value); 
+                          selection(value); 
                       "
                   >
                       <button>
@@ -90,6 +100,25 @@
 {% endschema %}
 
 <script>
+  var swiper = new Swiper(".swiper-container-{{- product.id -}}", {
+    slidesPerView: 1,
+    centeredSlides: true,
+    spaceBetween: 0,
+    loop: true,
+
+    breakpoints: {
+      600: {
+        allowTouchMove: false,
+        speed: 0,
+        navigation: {
+          nextEl: ".swiper-button-next-{{- product.id -}}",
+          prevEl: ".swiper-button-prev-{{- product.id -}}"
+        }
+      }
+    }
+  })
+
+
   if (document.querySelector("#add-to-cart-section")) {
     const productForm = Vue.createApp({
       delimiters: ["${", "}"],
@@ -97,9 +126,8 @@
         return {
           open: false,
           variants: "",
-          value:"",
-          selected: [],
           selectedVariant: "",
+          selected: [],
           selectedImage: "",
           form: {
             selections: "",
@@ -108,22 +136,15 @@
         };
       },
       created() {
-        axios.get("/products/{{ section.settings.featured_product.handle }}.js")
-        .then((results) => {
-  
-          console.log(results);
-
+        axios.get("/products/{{ section.settings.featured_product.handle }}.js").then((results) => {
           this.form.options = results.data.options.map((item) => ({
             ...item,
             visible: false,
           }));
-
           this.variants = results.data.variants;
-
           results.data.options.map((item) =>
             this.selected.push(item.values[0])
           );
-
           this.form.selections = [
             this.selected[0] ? this.selected[0] : null,
             this.selected[1] ? this.selected[1] : null,
@@ -137,18 +158,12 @@
               variant.option3 === this.form.selections[2]
             ) {
               this.selectedVariant = variant;
+              console.log(this.selectedVariant);
             }
           });
 
-
-          console.log("voici ma variante : " );
-          console.log(this.selectedVariant)
-
-          this.variants.forEach;
-
         });
       },
-
       methods: {
         addToCart(event) {
           event.preventDefault();
@@ -165,8 +180,6 @@
             }
           });
 
-          this.variants.forEach;
-
           let data = {
             id: selectedVariant.id,
             quantity: 1,
@@ -175,22 +188,38 @@
           axios
             .post("/cart/add.js", data)
             .then((response) => {
-              store.getCart()
+              store.getCart();
             })
             .then(() => {
-              toggleMiniCart.openCart()
+              toggleMiniCart.openCart();
             })
             .catch((error) => {
               console.log(error);
             });
         },
+        selection(value) {
 
-        selectionn(value) {
-          event.preventDefault()
-            console.log(value)
-            this.selectedVariant = value;
-            }
+            this.variants.forEach((variant, i) => {
+              if (
+                variant.option1 === this.form.selections[0] &&
+                variant.option2 === this.form.selections[1] &&
+                variant.option3 === this.form.selections[2]
+              ) {
+                this.selectedVariant = variant;
+              }
+          });
+
+          console.log(this.selectedVariant.featured_image.position);
+          console.log(this.selectedVariant);
+          
+         //swiper.slideTo(this.selectedVariant.featured_image.position)
+        }
       },
+      computed: {
+        image() {
+          return this.selectedImage
+        }
+      }
     }).mount("#add-to-cart-section");
   }
 </script>
