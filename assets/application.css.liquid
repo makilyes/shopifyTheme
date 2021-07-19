@@ -1,3 +1,180 @@
+/* Derived from base colors (theme settings) */
+
+:root,
+.color-background-1 {
+  --color-foreground: var(--color-base-text);
+  --color-foreground-rgb: var(--color-base-text-rgb);
+  --color-background: var(--color-base-background-1);
+  --color-background-rbg: var(--color-base-background-1-rgb);
+  --payment-terms-background-color: var(--color-base-background-1);
+}
+
+.color-background-2 {
+  --color-background: var(--color-base-background-2);
+  --color-background-rbg: var(--color-base-background-2-rgb);
+}
+
+.color-inverse {
+  --color-foreground: var(--color-base-background-1);
+  --color-foreground-rgb: var(--color-base-background-1-rgb);
+  --color-background: var(--color-base-text);
+  --color-background-rbg: var(--color-base-text-rgb);
+}
+
+.color-accent-1 {
+  --color-foreground: var(--color-base-solid-button-labels);
+  --color-foreground-rgb: var(--color-base-solid-button-labels-rgb);
+  --color-background: var(--color-base-accent-1);
+  --color-background-rbg: var(--color-base-accent-1-rgb);
+}
+
+.color-accent-2 {
+  --color-foreground: var(--color-base-solid-button-labels);
+  --color-foreground-rgb: var(--color-base-solid-button-labels-rgb);
+  --color-background: var(--color-base-accent-2);
+  --color-background-rbg: var(--color-base-accent-2-rgb);
+}
+
+.color-foreground-outline-button {
+  --color-foreground: var(--color-base-outline-button-labels);
+  --color-foreground-rbg: var(--color-base-outline-button-labels-rgb);
+}
+
+.color-foreground-accent-1 {
+  --color-foreground: var(--color-base-accent-1);
+  --color-foreground-rbg: var(--color-base-accent-1-rgb);
+}
+
+.color-foreground-accent-2 {
+  --color-foreground: var(--color-base-accent-2);
+  --color-foreground-rbg: var(--color-base-accent-2-rgb);
+}
+
+:root,
+.color-background-1,
+.color-background-2,
+.color-inverse,
+.color-accent-1,
+.color-accent-2 {
+  --color-foreground-75: rgba(var(--color-foreground-rgb), 0.75);
+  --color-foreground-70: rgba(var(--color-foreground-rgb), 0.7);
+  --color-foreground-55: rgba(var(--color-foreground-rgb), 0.55);
+  --color-foreground-50: rgba(var(--color-foreground-rgb), 0.5);
+  --color-foreground-40: rgba(var(--color-foreground-rgb), 0.4);
+  --color-foreground-30: rgba(var(--color-foreground-rgb), 0.3);
+  --color-foreground-20: rgba(var(--color-foreground-rgb), 0.2);
+  --color-foreground-10: rgba(var(--color-foreground-rgb), 0.1);
+  --color-foreground-8: rgba(var(--color-foreground-rgb), 0.08);
+  --color-foreground-4: rgba(var(--color-foreground-rgb), 0.04);
+  --color-foreground-3: rgba(var(--color-foreground-rgb), 0.03);
+}
+
+/* Links */
+
+:root,
+.color-background-1 {
+  --color-link: var(--color-base-outline-button-labels);
+  --color-link-hover: rgba(var(--color-base-outline-button-labels-rgb), 0.85);
+}
+
+.color-background-2,
+.color-inverse,
+.color-accent-1,
+.color-accent-2 {
+  --color-link: var(--color-foreground);
+  --color-link-hover: var(--color-foreground-70);
+}
+
+/* Primary button */
+
+:root,
+.color-background-1 {
+  --color-button-background: var(--color-base-accent-1);
+  --color-button-border: var(--color-base-accent-1);
+  --color-button-text: var(--color-base-solid-button-labels);
+  --color-button-text-rgb: var(--color-base-solid-button-labels-rgb);
+}
+
+.color-background-2,
+.color-inverse,
+.color-accent-1,
+.color-accent-2 {
+  --color-button-background: var(--color-foreground);
+  --color-button-border: var(--color-foreground);
+  --color-button-text: var(--color-background);
+  --color-button-text-rgb: var(--color-background-rbg);
+}
+
+/* Secondary button */
+
+.button--secondary {
+  --color-button-background: transparent;
+  --color-button-border: var(--color-base-outline-button-labels);
+  --color-button-text: var(--color-base-outline-button-labels);
+  --color-button-text-rgb: var(--color-base-outline-button-labels-rgb);
+}
+
+.color-background-2 .button--secondary,
+.color-inverse .button--secondary,
+.color-accent-1 .button--secondary,
+.color-accent-2 .button--secondary {
+  --color-button-border: var(--color-foreground);
+  --color-button-text: var(--color-foreground);
+  --color-button-text-rgb: var(--color-foreground-rgb);
+}
+
+/* Tertiary button */
+
+.button--tertiary {
+  --color-button-background: transparent;
+  --color-button-border: rgba(var(--color-base-outline-button-labels-rgb), 0.2);
+  --color-button-text: var(--color-base-outline-button-labels);
+  --color-button-text-rgb: var(--color-base-outline-button-labels-rgb);
+}
+
+.color-background-2 .button--tertiary,
+.color-inverse .button--tertiary,
+.color-accent-1 .button--tertiary,
+.color-accent-2 .button--tertiary {
+  --color-button-border: var(--color-foreground-20);
+  --color-button-text: var(--color-foreground);
+}
+
+/* Badges */
+
+:root,
+.color-background-1 {
+  --color-badge-background: var(--color-background);
+  --color-badge-border: var(--color-foreground-10);
+}
+
+.color-background-2,
+.color-inverse,
+.color-accent-1,
+.color-accent-2 {
+  --color-badge-background: var(--color-background);
+  --color-badge-border: var(--color-background);
+}
+
+/*  Cards and announcement bar */
+
+:root,
+.color-background-1,
+.color-background-2 {
+  --color-card-hover: rgba(var(--color-base-text-rgb), 0.06);
+}
+
+.color-inverse {
+  --color-card-hover: rgba(var(--color-base-background-1-rgb), 0.06);
+}
+
+.color-accent-1,
+.color-accent-2 {
+  --color-card-hover: rgba(var(--color-base-solid-button-labels-rgb), 0.06);
+}
+
+
+
 http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
 html,
 body,
@@ -223,6 +400,7 @@ svg {
   max-width: 100%;
   vertical-align: middle;
 }
+
 /* START HEADER */
 .header {
   position: fixed;
@@ -252,6 +430,7 @@ svg {
   left: 50%;
   transform: translate(-50%);
 }
+
 /* START MOBILE NAV */
 .header-mobile {
   height: 72px;
@@ -283,6 +462,109 @@ svg {
   background: white;
   z-index: 10;
 }
+
+
+
+/* section-announcement-bar */
+#shopify-section-announcement-bar {
+  z-index: 9000;
+  width: 100%;
+  position: absolute;
+  top: 50px;
+}
+
+.announcement-bar {
+  border-bottom: 0.1rem solid var(--color-foreground-20);
+  color: var(--color-foreground);
+  z-index: 9000;
+
+}
+
+.announcement-bar__link {
+  display: block;
+  width: 100%;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  z-index: 9000;
+
+}
+
+.announcement-bar__link:hover {
+  color: var(--color-foreground);
+  background-color: var(--color-card-hover);
+  z-index: 9000;
+
+}
+
+.announcement-bar__link .icon-arrow {
+  display: inline-block;
+  height: 1.2rem;
+  pointer-events: none;
+  padding-left: 1rem;
+  vertical-align: middle;
+  margin-bottom: 0.2rem;
+  z-index: 9000;
+
+}
+
+@media screen and (min-width: 750px) {
+  .announcement-bar__link .icon-arrow {
+    height: 1.3rem;
+  }
+}
+
+.announcement-bar__link .announcement-bar__message {
+  padding: 0;
+}
+
+.announcement-bar__message {
+  text-align: center;
+  padding: 1rem 2rem;
+  margin: 0;
+  letter-spacing: 0.1rem;
+}
+
+.announcement-bar__message.scroll{
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -moz-animation: scroll-left 9s linear infinite;
+  -webkit-animation: scroll-left 9s linear infinite;
+  animation: scroll-left 9s linear infinite;
+}
+
+
+@-moz-keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes scroll-left {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
 /* START COLLECTION */
 .collection-list {
   flex-wrap: wrap;
@@ -831,5 +1113,4 @@ svg {
 .padding-top {
   padding-top: 25px;
 }
-
 
