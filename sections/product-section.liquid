@@ -1,3 +1,5 @@
+{{ 'component-product-section.css' | asset_url | stylesheet_tag }}
+
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
@@ -26,7 +28,24 @@
         {{ product.description }}
       </div>
       {% render 'add-to-cart-form' %}
-      <p>test</p>
+      
+      <div class="product-delivery">
+        <ul  class="product-delivery-li">
+            {% for block in section.blocks %}
+            {%- case block.type -%}
+            {%- when 'delivery' -%}
+
+          <li class="product-delivery-li">
+            {{ block.settings.info_1 }}
+        </li>
+          <li>
+            {{ block.settings.info_2 }}
+          </li>
+          {%- endcase -%}
+            {% endfor %}
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
@@ -53,3 +72,39 @@
 </script>
 
 
+{% schema %}
+{
+    "name": "delivery info",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+    {
+        "type": "delivery",
+        "name": "delivery information",
+        "limit": 1,
+        "settings": [
+
+        {
+            "type": "text",
+            "id": "info_1",
+            "default": "Delivery time is 3-5 days",
+            "label": "Info 1"
+        },
+        {
+            "type": "text",
+            "id": "info_2",
+            "default": "Delivery time is 3-5 days",
+            "label": "Info 1"
+        }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "category": "delivery",
+            "name":"Delivery information"
+        }
+    ]
+    
+}
+  {% endschema %}

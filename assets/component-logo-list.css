@@ -1,0 +1,29 @@
+/* START LOGO LIST */
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+  }
+  .logo-link {
+    max-width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-link.column {
+    flex-direction: column;
+  }
+  
+  .logo-link.reverse {
+    flex-direction: column-reverse;
+  }
+  
+  
+  .logo-link img {
+    width: 50%;
+  }
+
+  .logo-text {
+      text-align: center;
+  }

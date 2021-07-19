@@ -1,10 +1,14 @@
-<div class="logo-list section">
+{{ 'component-logo-list.css' | asset_url | stylesheet_tag }}
+
+
+<div class="logo-list section" style="background-color: {{ section.settings.background }} ">
     <h2 class="heading center">{{ section.settings.title }}</h2>
   
     <div class="logo-container">
       {% for block in section.blocks %}
-        <a class="logo-link" href="{{ block.settings.link }}">
+        <a class="logo-link {% if block.settings.checkbox-reverse %} column {% else %} reverse {% endif %}" href="{{ block.settings.link }}">
           <img src="{{ block.settings.image | img_url: 'master' }}" >
+          <p class="logo-text ">{{ block.settings.text-logo }}</p>
         </a>
       {% endfor %}
     </div>
@@ -20,6 +24,12 @@
         "id": "title",
         "label": "Heading",
         "default": "Logo List"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "default": "#ffffff",
+        "label": "background color"
       }
     ],
     "blocks": [
@@ -37,6 +47,18 @@
             "id": "link",
             "label": "Logo link",
             "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "text-logo",
+            "label": "Text for logo 1",
+            "info": "Optional"
+          },
+          {
+            "type": "checkbox",
+            "id": "checkbox-reverse",
+            "default": true,
+            "label": "reverse text/image"
           }
         ]
       }
