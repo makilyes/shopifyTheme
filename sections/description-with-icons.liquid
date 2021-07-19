@@ -1,0 +1,73 @@
+{{ 'component-description-with-icons.css' | asset_url | stylesheet_tag }}
+
+<h2 class="title-description-with-icons"> {{ section.settings.title }} </h2>
+<p class="paragraph-description-with-icons"> {{ section.settings.description }} </p>
+
+<div class="logo-container-description-with-icons">
+    {% for block in section.blocks %}
+      <a class="logo-link-description-with-icons {% if block.settings.checkbox-reverse %} column {% else %} reverse {% endif %}" href="{{ block.settings.link }}">
+        <img src="{{ block.settings.image | img_url: 'master' }}" >
+        <p class="logo-text-description-with-icons ">{{ block.settings.text-logo }}</p>
+      </a>
+    {% endfor %}
+  </div>
+
+{% schema %}
+
+{
+    "name": "Description with icons",
+    "tag": "section",
+    "max_blocks": 4,
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "default": "Your Title",
+            "label": "Your title"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nibh ante, vehicula mollis tincidunt vitae, volutpat rhoncus purus. Aenean mollis ante purus, vitae mollis metus fermentum a. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc nec egestas nunc. Vivamus gravida urna purus, nec scelerisque lectus gravida non. Aliquam dignissim convallis odio et efficitur",
+            "label": "Your description"
+        }
+    ],
+    "blocks": [
+    {
+        "type": "logo_image",
+        "name": "Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Logo image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Logo link",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "text-logo",
+            "label": "Text for logo 1",
+            "info": "Optional"
+          },
+          {
+            "type": "checkbox",
+            "id": "checkbox-reverse",
+            "default": true,
+            "label": "reverse text/image"
+          }
+    ]
+        }],
+    "presets": [
+        {
+            "category": "description",
+            "name": "Description with icons"
+        }
+    ]
+}
+
+{% endschema %}

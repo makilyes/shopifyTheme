@@ -1,0 +1,43 @@
+.title-description-with-icons {
+    color: grey;
+    position: relative;
+    text-align: center;
+}
+
+.paragraph-description-with-icons {
+    text-align: center;
+    width: 75%;
+    margin: 0 auto;
+}
+
+/* START LOGO LIST */
+.logo-container-description-with-icons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    width: 70%;
+    margin: 0 auto;
+  }
+  .logo-link-description-with-icons {
+    max-width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-link-description-with-icons.column {
+    flex-direction: column;
+  }
+  
+  .logo-link-description-with-icons.reverse {
+    flex-direction: column-reverse;
+  }
+  
+  
+  .logo-link-description-with-icons img {
+    width: 50%;
+  }
+
+  .logo-text-description-with-icons {
+      text-align: center;
+  }

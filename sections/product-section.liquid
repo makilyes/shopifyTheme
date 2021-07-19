@@ -17,8 +17,10 @@
       </div>
     </div>
   </div>
-
   <div class="product-description-container">
+    <div class="alert" style="background-color: {{ section.settings.background }} ;">
+      <p class="alert-paragraph"> {{ section.settings.alert }}</p>
+    </div>
     <div class="product-title">
       <h1>{{ product.title }}</h1>
     </div>
@@ -45,20 +47,28 @@
             {% endfor %}
         </ul>
       </div>
-
     </div>
   </div>
 </div>
-
-
-
-
 
 {% schema %}
 {
     "name": "delivery info",
     "tag": "section",
-    "settings": [],
+    "settings": [
+        {
+          "type": "text",
+          "id": "alert",
+          "label": "Alert text",
+          "default": "CODE PROMO EN COURS : "
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "default": "#F7E018",
+        "label": "t:sections.image-banner.settings.color_scheme.label"
+      }
+    ],
     "blocks": [
     {
         "type": "delivery",
